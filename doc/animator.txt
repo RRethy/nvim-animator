@@ -1,0 +1,37 @@
+*animator.txt*  Neovim plugin for that animates the change in a value for use
+              in animations.
+
+Author:  Adam P. Regasz-Rethy (RRethy) <rethy.spud@gmail.com>
+License: Same terms as Vim itself (see |license|)
+
+QUICKSTART                                              *animator-quickstart*
+===========================================================================
+
+>
+    local value_animator = require('value_animator')
+    local anim = value_animator:new()
+    -- anim:animate(start_val, finish_val, duration_ms, callback)
+    anim:animate(0, 1000, 5000, function(val)
+        print(val)
+    end)
+<
+
+FUNCTIONS                                                *animator-functions*
+===========================================================================
+
+Make sure to `local anim = require('value_animator')` .
+
+animator:new()                                                 *animator:new*
+        Constructs and return a value animator.
+
+animator:animate({start_val},                              *animator:animate*
+    {finish_val},
+    {duration_ms},
+    {callback})
+        Animate from {start_val} to {finish_val} over {duration_ms}. Invokes
+        callback with the current value throughout to maintain 30fps.
+
+animator:stop()                                               *animator:stop*
+        Stops the animation.
+
+vim:tw=78:ts=8:ft=help:norl:
